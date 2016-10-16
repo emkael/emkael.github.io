@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>emkael.github.io</title>
+
+    <meta name="author" content="emkael" />
+    <meta name="description" content="emkael.github.io" />
+    <meta name="keywords" content="emkael, github, github pages, mkl" />
+
+    <base href="/" />
+
+        <link href="_css/styles.css?mtime=1476220442" rel="stylesheet" />
+    
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Menu</span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
+      <a class="navbar-brand" href=""> emkael.github.io </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+                        <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            My projects <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Racing stuff</li>
+                                                            <li><a href="https://github.com/emkael/ergast-goodies/">Ergast DB goodies</a></li>
+                                                <li><a href="https://github.com/emkael/elof1/">EloF1</a></li>
+                                                <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Bridge stuff</li>
+                                                            <li><a href="https://github.com/emkael/jfrpary-bidding-data/">Pary: bidding data</a></li>
+                                                <li><a href="https://github.com/emkael/jfrpary-virtual-table/">Pary: virtual tables</a></li>
+                                                <li><a href="https://github.com/emkael/patton/">Teamy: patton</a></li>
+                                                <li><a href="https://github.com/emkael/rrb2txt/">RRB2txt</a></li>
+                                                <li><a href="https://github.com/emkael/bcdd/">BCDD</a></li>
+                                                <li><a href="https://github.com/emkael/howellki/">Howellki</a></li>
+                                                <li><a href="https://github.com/emkael/osika/">OSiKa</a></li>
+                                                <li><a href="https://an9k.emkael.info/">Analizator9000</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                            <li><a href="https://github.com/emkael/">GitHub page</a></li>
+                                  </ul>
+        </li>
+                                <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Contributions <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li><a href="https://github.com/emkael/aktywator/">Aktywator by michzimny</a></li>
+                                                <li><a href="https://github.com/michzimny/teamy-quick-lineup/">Teamy quick lineup by michzimny</a></li>
+                                                <li><a href="https://github.com/emkael/prado/">Prado PHP framework</a></li>
+                                                <li><a href="https://github.com/emkael/yii-coding-standard/">Yii PHP framework coding standards</a></li>
+                                  </ul>
+        </li>
+                                <li>
+          <a href="contact/">About me / contact</a>
+        </li>
+                                <li>
+          <a href="https://emkael.info/">Website</a>
+        </li>
+                      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container">
+      <div class="page-header">
+  <h1>Wprowadzenie do uzupełniania powłoki bash, część 2</h1>
+  <a href="2016/10/16/an-introduction-to-bash-completion-part-2/">
+    <time class="text-muted" title="2016-10-16 18:05" datetime="2016-10-16T18:05">Sunday, October 16, 2016</time>
+  </a>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a href="https://debian-administration.org/article/317/An_introduction_to_bash_completion_part_2">
+      Oryginalny artykuł autorstwa Steve'a Kempa (po angielsku).
+    </a><br />
+    <a href="2016/10/16/an-introduction-to-bash-completion-part-1/">
+      Pierwsza część wprowadzenia.
+    </a>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+      Dotychczas pokazaliśmy jak dodać podstawowe uzupełnianie do poleceń, używając gotowych mechanizmów dostępnych w pakiecie bash. W drugiej części pokażemy jak dodać zupełnie nowe, własne uzupełnianie poleceń.
+    </p>
+    <p>
+      W <a href="2016/10/16/an-introduction-to-bash-completion-part-1/">części pierwszej</a> zobaczyliśmy dodawanie uzupełniania nazw hostów do dowolnie wybranych poleceń używając:
+      <pre>complete -F _known_hosts xvncviewer</pre>
+    </p>
+    <p>
+      Metoda używa polecenia <code>complete</code> do powiadomienia basha, że funkcja <code>_known_hosts</code> powinna zostać użyta do obsługi uzupełniania argumentów dla <code>xvncviewer</code>.
+    </p>
+    <p>
+      Jeśli chcemy dodać własne uzupełnianie do polecenia, musimy napisać w jej miejsce swoją własną funkcję, i skojarzyć <em>ją</em> z poleceniem.
+    </p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Prosty przykład
+  </div>
+  <div class="panel-body">
+    <p>
+      Jako podstawowy przykład, spróbujemy dodać proste uzupełnianie do programu <code>foo</code>. To przykładowe polecenie przyjmuje trzy argumenty:
+      <ul>
+        <li>
+          <dt>--help</dt>
+          <dd>
+            Wyświetla opcje pomocy dla <code>foo</code>, i kończy wykonanie.
+          </dd>
+        </li>
+        <li>
+          <dt>--version</dt>
+          <dd>
+            Pokazuje wersję polecenia <code>foo</code>, i kończy wykonanie.
+          </dd>
+        </li>
+        <li>
+          <dt>--verbose</dt>
+          <dd>
+            Uruchamia <code>foo</code> w trybie szczegółowego wyjścia
+          </dd>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Do obsługi tych argumentów utworzymy nowy plik <code>/etc/bash_completion.d/foo</code>. Plik ten będzie automatycznie dołączony (lub załadowany), gdy ładowany jest kod uzupełniania basha.
+    </p>
+    <p>
+      Wewnątrz tego pliku zapisz poniższą treść:
+      <pre>
+_foo()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--help --verbose --version"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+
+complete -F _foo foo</pre>
+    </p>
+    <p>
+      Bo go przetestować, możesz teraz dołączyć plik:
+      <pre>
+skx@lappy:~$ . /etc/bash_completion.d/foo
+skx@lappy:~$ foo --<kbd>TAB</kbd>
+    --help     --verbose  --version</pre>
+    </p>
+    <p>
+      Eksperymentując, przekonasz się, że argumenty są poprawnie uzupełniane, zgodnie z oczekiwaniami. Wpisanie <code>foo --h<kbd>TAB</kbd></code> powoduje uzupełnienie argumentu <code>--help</code>. Wciśnięcie <kbd>TAB</kbd> kilka razy powoduje wyświetlenie listy wszystkich podpowiedzi. (W tym wypadku nie ma nawet znaczenia, że program o nazwie <code>foo</code> nie jest dostępny w Twoim systemie.)
+    </p>
+    <p>
+      Skoro dysponujemy działającym przykładem, powinniśmy spojrzeć, w <em>jaki</em> sposób działa!
+    </p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Jak działa uzupełnianie
+  </div>
+  <div class="panel-body">
+    <p>
+      Poprzedni przykład pokazywał prostą funkcję basha, która była wywoływana do obsługi uzupełniania dla polecenia.
+    </p>
+    <p>
+      Funkcja na początku definiuje kilka zmiennych, <code>cur</code> – bieżące wpisywane słowo, <code>prev</code> – poprzednie wpisane słowo, oraz <code>opts</code> – nasza lista opcji do uzupełnienia.
+    </p>
+    <p>
+      Uzupełnianie opcji jest następnie obsługiwane poprzez użycie komendy <code>compgen</code> w następującym wywołaniu:
+      <pre>
+COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )</pre>
+    </p>
+    <p>
+      Sprawia to ustawienie wartości zmiennej <code>$COMPREPLY</code> na wyjście polecenia:
+      <pre>
+compgen -W "${opts}" -- ${cur}</pre>
+    </p>
+    <p>
+      Gdyby zastąpić te zmienne ich wartościami, przekonamy się, jak ono działa:
+      <pre>compgen -W "--help --verbose --version" -- "userinput"</pre>
+    </p>
+    <p>
+      Polecenie usiłuje zwrócić dopasowanie bieżącego słowa <code>${cur}</code> do listy <code>--help --verbose --version</code>. Po wywołaniu go w powłoce, będziesz w stanie przekonać się, jak to działa:
+      <pre>skx@lappy:~$ compgen -W "--help --verbose --version" -- --
+--help
+--verbose
+--version
+skx@lappy:~$ compgen -W "--help --verbose --version" -- --h
+--help</pre>
+    </p>
+    <p>
+      Na początku widać, co się stanie, gdy użytkownik wpisze jedynie <code>--</code> - wszystkie trzy opcje pasują, więc są zwracane. Przy drugiej próbie, użytkownik wprowadza <code>--h</code>. I to wystarcza do jednoznacznego dopasowania <code>--help</code>, więc to jest zwracane.
+    </p>
+    <p>
+      W naszej funkcji, po prostu ustawiamy nasz wynik jako <code>COMPREPLY</code>, i kończymy wywołanie. To pozwala bashowi zastąpić bieżące słowo wyjściem. <code>COMPREPLY</code> jest specjalną zmienną, która ma konkretne znaczenie wewnątrz basha. W procedurach uzupełniania używana jest do oznaczania wyniku próby uzupełniania.
+    </p>
+    <p>
+      Z <a href="http://www.gnu.org/software/bash/manual/bash.html">dokumentacji basha (ang.)</a> możemy dowiedzieć się opisu <code>COMPREPLY</code>:
+      <blockquote>
+        <dt>COMPREPLY</dt>
+        <dd>Zmienna tablicowa, z której Bash czyta możliwe uzupełnienia wygenerowane przez funkcję powłoki wywoływaną przez podsystem programowalnego uzupełniania</dd>
+        <p>
+          Możemy również dowiedzieć się, w jaki sposób znaleźliśmy bieżące słowo, używając tablicy <code>COMP_WORDS</code> do odszukania zarówno bieżącego, jak i poprzedniego słowa:
+          <dt>COMP_WORDS</dt>
+          <dd>Zmienna tablicowa składająca się z pojedynczych słów w bieżącym wierszu poleceń. Zmienna ta jest dostępna tylko w funkcjach powłoki wywoływanych przez podsystem programowalnego uzupełniania.</dd>
+          <dt>COMP_CWORD</dt>
+          <dd>Indeks tablicy <code>${COMP_WORDS}</code> słowa zawierającego bieżącą pozycję kursora. Zmienna ta jest dostępna tylko w funkcjach powłoki wywoływanych przez podsystem programowalnego uzupełniania</dd>
+        </p>
+      </blockquote>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Złożony przykład
+  </div>
+  <div class="panel-body">
+    <p>
+      Wiele poleceń jest bardziej skomplikowane do uzupełnienia, i posiada liczne opcje zależne od poprzednich.
+    </p>
+    <p>
+      Jako przykład posłuży dostarczane z Xen polecenie xm, posiadające podstawowe opcje:
+      <ul>
+        <li>
+          <dt>xm list</dt>
+          <dd>Wypisuje wszystkie uruchomione instancje Xen</dd>
+        </li>
+        <li>
+          <dt>xm create ConfigName</dt>
+          <dd>Tworzy nową instancję Xen używając pliku konfiguracyjnego z <code>/etc/xen</code> o nazwie <code>ConfigName</code>.</dd>
+        </li>
+        <li>
+          <dt>xm console Name</dt>
+          <dd>Łączy z konsolą uruchomionej maszyny o nazwie <code>Name</code>.</dd>
+        </li>
+      </ul>
+    </p>
+    <p>
+      Przeważnie polecenie wywołuje się jako <code>xm operation args</code>, gdzie <code>args</code> różni się w zależności od wybranego argumentu <code>operation</code>.
+    </p>
+    <p>
+      Konfiguracja prostego uzupełniania pierwszego słowa – operacji – może zostać obsłużone w ten sam sposób, co w naszym poprzednim przykładzie, przy czym operacje nie zaczynają się od prefiksu <code>--</code>. Uzupełnienie argumentów operacji natomiast wymaga specjalnej obsługi.
+    </p>
+    <p>
+      Jak pamiętacie, mamy dostęp do poprzedniego słowa wiersza poleceń, i używając go, możemy rozróżnić akcje dla poszczególnych operacji.
+    </p>
+    <p>
+      Przykładowy kod wygląda następująco:
+      <pre>
+_xm()
+{
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    #
+    #  The basic options we'll complete.
+    #
+    opts="console create list"
+
+
+    #
+    #  Complete the arguments to some of the basic commands.
+    #
+    case "${prev}" in
+    console)
+        local running=$(for x in `xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)`; do echo ${x} ; done )
+        COMPREPLY=( $(compgen -W "${running}" -- ${cur}) )
+        return 0
+    ;;
+    create)
+        local names=$(for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done )
+        COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
+        return 0
+    ;;
+    *)
+    ;;
+    esac
+
+    COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+    return 0
+}
+
+complete -F _xm xm</pre>
+    </p>
+    <p>
+      Skonfigurowaliśmy początkowe uzupełnianie operacji i dodaliśmy specjalną obsługę dwóch operacji: <code>create</code> i <code>console</code>. W obu przypadkach używamy compgen do uzupełnienia wejścia w zależności od tekstu podanego przez użytkownika, porównując je z dynamicznie generowaną listą.
+    </p>
+    <p>
+      Dla operacji <code>console</code> uzupełniamy na podstawie wyjścia poniższego polecenia:
+      <pre>xm list --long | grep \(name | grep -v Domain-0 | awk '{ print $2 }' | tr -d \)</pre>
+    </p>
+    <p>
+      Zwraca ono listę uruchomionych systemów Xen.
+    </p>
+    <p>
+      Dla operacji tworzenia, uzupełniamy na podstawie wyjścia poniższego polecenia:
+      <pre>for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//} ; done</pre>
+    </p>
+    <p>
+      Przekształca ono listing katalogu <code>/etc/xen</code> w wyjście składające się z nazw plików zakończonych ciągiem <code>.cfg</code>. Na przykład:
+      <pre>
+skx@lappy:~$ for x in `ls -1 /etc/xen/*.cfg`; do echo ${x/\/etc\/xen\//}; done
+etch.cfg
+root.cfg
+sarge.cfg
+steve.cfg
+x.cfg
+skx@lappy:~$</pre>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Inne uzupełniania</div>
+  <div class="panel-body">
+    <p>
+      Używając polecenia <code>compgen</code>, pokazaliśmy, jak dopasować wejście użytkownika do list konkretnych łańcuchów znaków, zarówno używając ustalonej listy możliwości, jak i wyjścia innych poleceń.
+    </p>
+    <p>
+      Możliwe jest również użycie nazw katalogów, nazw procesów oraz innych rzeczy. Pełen opis można zobaczyć w podręczniku basha, poprzez wywołanie polecenia <code>man bash</code>.
+    </p>
+    <p>
+      Końcowy przykład pokazuje, jak uzupełniać nazwy plików i hostów w odpowiedzi na dwie pierwsze opcje:
+      <pre>
+#
+#  Completion for foo:
+#
+#  foo file [filename]
+#  foo hostname [hostname]
+#
+_foo()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="file hostname"
+
+    case "${prev}" in
+    file)
+        COMPREPLY=( $(compgen -f ${cur}) )
+        return 0
+    ;;
+    hostname)
+        COMPREPLY=( $(compgen -A hostname ${cur}) )
+        return 0
+    ;;
+    *)
+    ;;
+    esac
+
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+}
+
+complete -F _foo foo</pre>
+    </p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+      Używając tych przykładów, powinniście móc stworzyć własne funkcje obsługi uzupełniania. W 95% przypadków będziecie potrzebować uzupełniania spośród zbioru dostępnych opcji, w pozostałych przypadkach będziecie mieć do czynienia z dynamicznym generowaniem argumentów, jak pokazaliśmy na przykładzie <code>xm</code>.
+    </p>
+    <p>
+      Prawdopodobnie najlepszym podejściem jest rozbicie opcji na zbiór potoków wiersza poleceń i przetestowanie ich poza środowiskiem uzupełniania (po prostu, w powłoce), a następnie po prostu wklejenie gotowych poleceń do funkcji uzupełniania.
+    </p>
+  </div>
+</div>
+
+    </div>
+
+    <div class="container" >
+      <hr />
+      <footer>
+        <p>
+          <address>
+            <span class="copy">&copy;</span>
+            <a href="//emkael.info/">emkael</a>, 2016
+          </address>
+      </footer>
+    </div>
+
+        <script src="_js/scripts.js?mtime=1476220442" type="text/javascript"></script>
+    
+  </body>
+</html>

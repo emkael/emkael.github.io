@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>emkael.github.io</title>
+
+    <meta name="author" content="emkael" />
+    <meta name="description" content="emkael.github.io" />
+    <meta name="keywords" content="emkael, github, github pages, mkl" />
+
+    <base href="/" />
+
+        <link href="_css/styles.css?mtime=1476220442" rel="stylesheet" />
+    
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Menu</span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
+      <a class="navbar-brand" href=""> emkael.github.io </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+                        <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            My projects <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Racing stuff</li>
+                                                            <li><a href="https://github.com/emkael/ergast-goodies/">Ergast DB goodies</a></li>
+                                                <li><a href="https://github.com/emkael/elof1/">EloF1</a></li>
+                                                <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Bridge stuff</li>
+                                                            <li><a href="https://github.com/emkael/jfrpary-bidding-data/">Pary: bidding data</a></li>
+                                                <li><a href="https://github.com/emkael/jfrpary-virtual-table/">Pary: virtual tables</a></li>
+                                                <li><a href="https://github.com/emkael/patton/">Teamy: patton</a></li>
+                                                <li><a href="https://github.com/emkael/rrb2txt/">RRB2txt</a></li>
+                                                <li><a href="https://github.com/emkael/bcdd/">BCDD</a></li>
+                                                <li><a href="https://github.com/emkael/howellki/">Howellki</a></li>
+                                                <li><a href="https://github.com/emkael/osika/">OSiKa</a></li>
+                                                <li><a href="https://an9k.emkael.info/">Analizator9000</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                            <li><a href="https://github.com/emkael/">GitHub page</a></li>
+                                  </ul>
+        </li>
+                                <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Contributions <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li><a href="https://github.com/emkael/aktywator/">Aktywator by michzimny</a></li>
+                                                <li><a href="https://github.com/michzimny/teamy-quick-lineup/">Teamy quick lineup by michzimny</a></li>
+                                                <li><a href="https://github.com/emkael/prado/">Prado PHP framework</a></li>
+                                                <li><a href="https://github.com/emkael/yii-coding-standard/">Yii PHP framework coding standards</a></li>
+                                  </ul>
+        </li>
+                                <li>
+          <a href="contact/">About me / contact</a>
+        </li>
+                                <li>
+          <a href="https://emkael.info/">Website</a>
+        </li>
+                      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container">
+      <div class="page-header">
+  <h1>Wprowadzenie do uzupełniania powłoki bash, część 1</h1>
+  <a href="2016/10/16/an-introduction-to-bash-completion-part-1/">
+    <time class="text-muted" title="2016-10-16 11:05" datetime="2016-10-16T11:05">Sunday, October 16, 2016</time>
+  </a>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a href="https://debian-administration.org/article/316/An_introduction_to_bash_completion_part_1">
+      Oryginalny artykuł autorstwa Steve'a Kempa (po angielsku).
+    </a><br />
+    <a href="2016/10/16/an-introduction-to-bash-completion-part-2/">
+      Druga część wprowadzenia.
+    </a>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+      Jedną z najmilszych funkcjonalności nowoczesnych powłok jest wbudowana obsługa “uzupełniania”. Funkcje te umożliwiają łatwe uzupełnianie poleceń oraz ich argumentów. Czytajcie dalej, by poznać krótkie wprowadzenie do dodawania swojego własnego podpowiadania poleceń.
+    </p>
+    <p>
+      Większość powłok umożliwia podpowiadanie poleceń, zwykle związane z klawiszem <kbd>TAB</kbd>, które pozwala na uzupełnianie nazw poleceń dostępnych ze ścieżki wykonywania (<code>PATH</code>), nazw plików czy katalogów. Typowe użycie wygląda następująco:
+      <pre>
+ls /bo<kbd>TAB</kbd></pre>
+      Po wciśnięciu klawisza <kbd>TAB</kbd>, argument <code>/bo</code> jest automatycznie zastępowany wartością <code>/boot</code>.
+    </p>
+    <p>
+      W ostatnich czasach niektóre powłoki zaczęły umożliwiać nawet więcej: uzupełniać <em>argumenty</em> poleceń. Dwie godne uwagi powłoki pozwalające na to, to zsh i bash. Jako że jestem użytkownikiem basha, omówię tylko nią.
+    </p>
+    <p>
+      <a href="http://packages.debian.org/bash">Debianowy pakiet <code>bash</code></a> dostarcza plik podpowiedzi <code>/etc/bash_completion</code>, który konfiguruje podstawową obslugę uzupełniania.
+    </p>
+    <p>
+      Jeśli go nie używacie, możecie załadować go poprzez wpisanie w Waszej powłoce <code>. /etc/bash_completion</code>, jak pokazano poniżej:
+      <pre>skx@lappy:~$ . /etc/bash_completion
+skx@lappy:~$</pre>
+    </p>
+    <p>
+      Po wykonaniu tego polecenia, będziecie w stanie uzupełniać <kbd>TAB</kbd>em wiele popularnych argumentów programów, na przykład:
+      <pre>skx@lappy:~$ apt-get upd<kbd>TAB</kbd>
+skx@lappy:~$ apt-get upg<kbd>TAB</kbd></pre>
+    </p>
+    <p>
+      Ale jak rozszerzyć tę funkcjonalność samemu? Cóż, dostarczone procedury uzupełniania używają kilku wewnętrznych poleceń basha, jak np. <code>complete</code>. Można ich użyć we własnych skryptach rozruchowych albo, łatwiej, tworząc niewielki plik i umieszczając go w katalogu <code>/etc/bash_completion.d/</code>.
+    </p>
+    <p>
+      W momencie, gdy plik <code>bash_completion</code> jest wykonywany (bądź ładowany), wszystko wewnątrz katalogu <code>/etc/bash_completion.d</code> jest również ładowane. To sprawia, że dodanie własnych rozszerzeń jest prostą sprawą.
+    </p>
+    <p>
+      Jednym ze słowników, z których bash potrafi podpowiadać wartości, jest zbiór nazw hostów, co może być przydatne wielu programom.
+    </p>
+    <p>
+      <a href="http://www.debian-administration.org/articles/135">Zarządzam zdalnie kilkoma komputerami, przy użyciu vnc</a> i zwykle robię to poprzez wywołanie polecenia <code>xvncviewer nazwa_hosta</code>.
+    </p>
+    <p>
+      Aby umożliwić bashowi podpowiadanie fragmentów nazw hostów, które wpisuję, zastosujemy komendę complete do poinformowania, że <code>xvncviewer</code> wymaga nazwy hosta:
+      <pre>skx@lappy:~$ complete -F _known_hosts xvncviewer</pre>
+    </p>
+    <p>
+      Po wykonaniu tej operacji mogę wcisnąć <kbd>TAB</kbd>, by uzupełnić nazwy hostów:
+      <pre>skx@lappy:~$ xvncviewer s<kbd>TAB</kbd>
+savannah.gnu.org            ssh.tardis.ed.ac.uk
+scratchy                    steve.org.uk
+security.debian.org         security-master.debian.org
+sun
+skx@lappy:~$ xvncviewer sc<kbd>TAB</kbd></pre>
+    </p>
+    <p>
+      Powyższe właśnie uzupełniło dla mnie nazwę hosta <code>scratchy</code>.
+    </p>
+    <p>
+      Funkcja <code>_known_hosts</code> została zdefiniowana w pliku <code>/etc/bash_completion</code>. Skąd wiedziałem, że mogę jej użyć? Podając polecenie <code>complete -p</code>, by wyświetlić wszystkie skojarzone nazwy do użycia:
+      <pre>skx@lappy:~$ complete -p
+....
+complete -F _known_hosts tracepath6
+complete -F _known_hosts host
+...</pre>
+    </p>
+    <p>
+      Czego nauczyliśmy się dotychczas?
+      <ul>
+        <li>Istnieje coś takiego, jak uzupełnianie wiersza poleceń.</li>
+        <li>Uzupełnianie jest zaimplementowane w pliku <code>/etc/bash_completion</code></li>
+        <li>Nowe polecenia uzupełniania mogą zostać umieszczone w katalogu <code>/etc/bash_completion.d</code></li>
+        <li>Możemy wypisać wszystkie bieżące procedury uzupełniania poprzez <code>complete -p</code></li>
+      </ul>
+    </p>
+    <p>
+      W drugiej części zerkniemy na definiowanie własnych procedur obsługujących linię poleceń – podobnych do już istniejących. Będziemy mogli dodać uzupełnianie wiersza poleceń dla własnych programów, lub nieobsługiwanych jeszcze poleceń.
+    </p>
+    <p>
+      Do tego czasu, poeksperymentujcie trochę.
+    </p>
+  </div>
+</div>
+
+    </div>
+
+    <div class="container" >
+      <hr />
+      <footer>
+        <p>
+          <address>
+            <span class="copy">&copy;</span>
+            <a href="//emkael.info/">emkael</a>, 2016
+          </address>
+      </footer>
+    </div>
+
+        <script src="_js/scripts.js?mtime=1476220442" type="text/javascript"></script>
+    
+  </body>
+</html>
