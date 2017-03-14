@@ -1,0 +1,295 @@
+/* PLIK CSS DLA PROGRAMÓW TEAMADMIN i PARY
+   ostatnia poprawka: 28-lip-2008 18:36
+   Napisy postaci :XX bed¹ zmieniane na:
+   BG kolor t³a
+   TX kolor tekstu
+   RA kolor ramki
+   RP kolor ramki w parach
+   FO nazwa fontu
+   FS wielkoœæ fontu w punktach - potem FS, FS+1, FS-3 ...
+   HO t³o komórki gospodarza
+   VI t³o komórki goœcia
+   TT t³o komórki z tytu³em
+   TK t³o komórki nag³ówkowej
+*/
+
+body.all {background-color: :BG}
+
+/* obrazki normalnie bez ramki, flagi maj¹ ramkê jasnoszar¹ */
+img {border: none}
+/* ma³a flaga */
+img.fl {border: 1px solid rgb(192,192,192); height: 15px; width: 21px; vertical-align: middle}
+/* œrednia flaga */
+img.flb {border: 1px solid rgb(192,192,192); height: 20px; width: 28px;vertical-align: middle}
+/* normalny rozmiar flagi */
+img.bfl {border: 1px solid rgb(192,192,192)}
+
+/* normalne elementy*/
+p,td,ul,ol {font-size: :FS; font-family: :FO; font-weight: normal; color: :TX}
+h1 {font-family: :FO; color: :TX}
+h2 {font-family: :FO; color: :TX}
+h3 {font-family: :FO; color: :TX}
+h4 {font-family: :FO; color: :TX}
+h5 {font-family: :FO; color: :TX}
+h6 {font-family: :FO; color: :TX}
+td {padding: 1px}
+
+/* paragrafy specjalne*/
+p.f {font-size: 8pt; font-family: :FO; font-weight: normal; color: :TX; border: 1px; border-style: dotted}
+span.wspak {unicode-bidi:bidi-override; direction: rtl}
+p.vs {font-size: 3pt}
+
+/* tablica/rz¹d stronicowane */
+.np {page-break-before: always}
+
+/* linki
+   normalny - bez podkreœlenia, zmiana kolorów
+*/
+a:link {font-size: :FS; font-family: :FO; font-weight: normal; text-decoration: none;color: :TX}
+a:visited {font-size: :FS; font-family: :FO; font-weight: normal; text-decoration: none;color: :TX}
+a:hover {font-size: :FS; font-family: :FO; font-weight: normal; text-decoration: none; color: :BG; background-color: :RA}
+a:active {font-size: :FS; font-family: :FO; font-weight: normal; text-decoration: none; color: :BG; background-color: :RA}
+/* */
+a.ti:link {font-size: :FS; font-family: :FO; font-weight: normal; text-decoration: none;color: :TX}
+a.ti:visited {font-size: :FS; font-family: :FO; font-weight: normal; text-decoration: none;color: :TX}
+a.ti:hover {font-size: :FS; font-family: :FO; font-weight: normal; text-decoration: none; color: :TX; background-color: :BG}
+a.ti:active {font-size: :FS; font-family: :FO; font-weight: normal; text-decoration: none; color: :TX; background-color: :BG}
+/* */
+a.m:link {font-size: 8pt; font-family: :FO; font-weight: normal; text-decoration: underline;color: :TX}
+a.m:visited {font-size: 8pt; font-family: :FO; font-weight: normal; text-decoration: none;color: :TX}
+a.m:hover {font-size: 8pt; font-family: :FO; font-weight: normal; text-decoration: none; color: :BG; background-color: :RA}
+a.m:active {font-size: 8pt; font-family: :FO; font-weight: normal; text-decoration: none; color: :BG; background-color: :RA}
+/* */
+a.z0:link {font-size: :FS; font-family: :FO; font-weight: bold; text-decoration: none;color: :BG; background-color: :RA}
+a.z0:visited {font-size: :FS; font-family: :FO; font-weight: bold; text-decoration: none;color: :BG; background-color: :RA}
+a.z0:hover {font-size: :FS; font-family: :FO; font-weight: bold; text-decoration: none; color: :BG; background-color: :RA}
+a.z0:active {font-size: :FS; font-family: :FO; font-weight: bold; text-decoration: none; color: :BG; background-color: :RA}
+/* */
+a.zb:link {font-size: :FS; font-family: :FO; font-weight: bold; text-decoration: none;color: :TX}
+a.zb:visited {font-size: :FS; font-family: :FO; font-weight: bold; text-decoration: none;color: :TX}
+a.zb:hover {font-size: :FS; font-family: :FO; font-weight: bold; text-decoration: none; color: :BG; background-color: :RA}
+a.zb:active {font-size: :FS; font-family: :FO; font-weight: bold; text-decoration: none; color: :BG; background-color: :RA}
+/* */
+a.b:link {font-size: :FS+4; font-family: :FO; font-weight: bold; text-decoration: none;color: :TX}
+a.b:visited {font-size: :FS+4; font-family: :FO; font-weight: bold; text-decoration: none;color: :TX}
+a.b:hover {font-size: :FS+4; font-family: :FO; font-weight: bold; text-decoration: none; color: :BG; background-color: :RA}
+a.b:active {font-size: :FS+4; font-family: :FO; font-weight: bold; text-decoration: none; color: :BG; background-color: :RA}
+/* */
+a.bi:link {font-size: :FS+2; font-family: :FO; text-decoration: none;color: :TX}
+a.bi:visited {font-size: :FS+2; font-family: :FO; text-decoration: none;color: :TX}
+a.bi:hover {font-size: :FS+2; font-family: :FO; text-decoration: none; color: :BG; background-color: :RA}
+a.bi:active {font-size: :FS+2; font-family: :FO; text-decoration: none; color: :BG; background-color: :RA}
+/* */
+a.br:link {font-size: :FS+2; font-family: :FO; font-weight: bold; text-decoration: none;color: :TX}
+a.br:visited {font-size: :FS+2; font-family: :FO; font-weight: bold; text-decoration: none;color: :TX}
+a.br:hover {font-size: :FS+2; font-family: :FO; font-weight: bold; text-decoration: none; color: :BG; background-color: :RA}
+a.br:active {font-size: :FS+2; font-family: :FO; font-weight: bold; text-decoration: none; color: :BG; background-color: :RA}
+
+/* komórki
+   w¹ski odstêp w tabelce */
+td.e {font-size: 4pt}
+
+/* z brzegiem dolnym */
+td.un {padding: 1px; border-bottom: 1px solid :RA;  text-align: center; white-space: nowrap}
+
+/* dalej liczba na koñcu nazwy oznacza sposób obramowania:
+
+   bez =  _|  normalnie w tabelce
+          _
+     1 = |_| pocz¹tek wiersza
+     
+     2 =  _| œrodek pierwszego wiersza (góra,dó³,prawy) 
+     
+    12 = pe³ne obramowanie,pocz¹tek tabelki
+
+*/
+
+td.s {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS-3; color: :TX; background-color: :TK; white-space: nowrap}
+td.s1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS-3; color: :TX; background-color: :TK; white-space: nowrap}
+td.s2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS-3; color: :TX; background-color: :TK; white-space: nowrap}
+td.s12 {padding: 1px; border: 1px solid :RA; text-align: center; font-size: :FS-3; color: :TX; background-color: :TK; white-space: nowrap}
+/*  */
+td.b {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS+1; color: :TX; background-color: :TK; white-space: nowrap}
+td.b1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS+1; color: :TX; background-color: :TK; white-space: nowrap}
+td.b2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS+1; color: :TX; background-color: :TK; white-space: nowrap}
+td.b12 {padding: 1px; border: 1px solid :RA; text-align: center; font-size: :FS+1; color: :TX; background-color: :TK; white-space: nowrap}
+/*  */
+td.t {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS+4; font-weight: bold; background-color: :TK; white-space: nowrap}
+/* t0=tylko prawe */
+td.t0 {padding: 1px; border-right: 1px solid :RA; text-align: center; font-size: 4pt; font-weight: bold; background-color: :TK; white-space: nowrap}
+td.t1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS+4; font-weight: bold; background-color: :TK; white-space: nowrap}
+td.t2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS+4; font-weight: bold; background-color: :TK; white-space: nowrap}
+td.t12 {padding: 1px; border: 1px solid :RA; text-align: center; font-size: :FS+4; font-weight: bold; background-color: :TK; white-space: nowrap}
+/* t3=t z malutkim fontem */
+td.t3 {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: 4pt; font-weight: bold; background-color: :TK; white-space: nowrap}
+/* tl=|_ */
+td.tl {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; text-align: center; font-size: :FS+4; font-weight: bold; background-color: :TK; white-space: nowrap}
+/*  */
+td.tr {border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; background-color: :TK; white-space: nowrap}
+td.tr1 {border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; background-color: :TK; white-space: nowrap}
+td.tr2 {border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; background-color: :TK; white-space: nowrap}
+td.tr12 {border: 1px solid :RA; text-align: right; background-color: :TK; white-space: nowrap}
+/*  */
+td.ban {font-size: :FS+2; font-family: Arial; font-weight: bold; color: :TX}
+/*  */
+td.bda {padding: 1px; border-bottom: 1px solid :RA; text-align: right; white-space: nowrap}
+td.bda1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; text-align: right; white-space: nowrap}
+td.bdca {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; font-size: :FS-2; white-space: nowrap}
+td.bdcg {padding: 1px; border-bottom: 1px solid :RA; text-align: center; white-space: nowrap}
+/*  */
+td.bd {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; white-space: nowrap; text-align: left}
+td.bd1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; white-space: nowrap; text-align: left}
+td.bd2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; white-space: nowrap; text-align: left}
+td.bd12 {padding: 1px; border: 1px solid :RA; white-space: nowrap; text-align: left}
+/*  */
+td.bdc {padding: 1px 4px 1px 4px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; white-space: nowrap}
+td.bdc1 {padding: 1px 4px 1px 4px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; white-space: nowrap}
+td.bdcw {padding: 1px 1px 1px 80px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: left; white-space: nowrap}
+td.bdc2 {padding: 1px 4px 1px 4px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; white-space: nowrap}
+td.bdc12 {padding: 1px 4px 1px 4px; border: 1px solid :RA; text-align: center; white-space: nowrap}
+td.bdcp {padding: 1px 4px 1px 4px; border-left: 1px solid :RA; border-bottom: 1px solid :RA}
+td.bdcn {padding: 1px 4px 1px 4px; text-align: left; white-space: nowrap}
+td.bdco {padding: 1px 4px 1px 4px; border-bottom: 1px solid :RA; text-align: left; white-space: nowrap}
+td.bdck {padding: 1px 4px 1px 4px; border-bottom: 1px solid :RA; border-right: 1px solid :RA}
+/*  */
+td.bdcc {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :TK; white-space: nowrap}
+td.bdcc1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :TK; white-space: nowrap}
+td.bdcc2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :TK; white-space: nowrap}
+td.bdcc12 {padding: 1px; border: 1px solid :RA; text-align: center; background-color: :TK; white-space: nowrap}
+/*  */
+td.bdcr {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; background-color: :TK; white-space: nowrap}
+td.bdcr1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; background-color: :TK; white-space: nowrap}
+td.bdcr2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; background-color: :TK; white-space: nowrap}
+td.bdcr12 {padding: 1px; border: 1px solid :RA; text-align: right; background-color: :TK; white-space: nowrap}
+/*  */
+td.bdt {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :RA; text-align: center; white-space: nowrap}
+td.bdt1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :RA; text-align: center; white-space: nowrap}
+td.bdt2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :RA; text-align: center; white-space: nowrap}
+td.bdt12 {padding: 1px; border: 1px solid :RA; background-color: :RA; text-align: center; white-space: nowrap}
+/*  */
+td.bdn {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :HO; white-space: nowrap}
+td.bdn1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :HO; white-space: nowrap}
+td.bdn2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :HO; white-space: nowrap}
+td.bdn12 {padding: 1px; border: 1px solid :RA; text-align: center; background-color: :HO; white-space: nowrap}
+/*  */
+td.bde {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :VI; white-space: nowrap}
+td.bde1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :VI; white-space: nowrap}
+td.bde2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :VI; white-space: nowrap}
+td.bde12 {padding: 1px; border: 1px solid :RA; text-align: center; background-color: :VI; white-space: nowrap}
+/*  */
+td.zno {padding-left: 5px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: left; white-space: nowrap}
+td.zno1 {padding-left: 5px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: left; white-space: nowrap}
+td.zno2 {padding-left: 5px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: left; white-space: nowrap}
+td.zno12 {padding-left: 5px; border: 1px solid :RA; text-align: left; white-space: nowrap}
+/*  */
+td.zeo {padding-right: 5px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; white-space: nowrap}
+td.zeo1 {padding-right: 5px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; white-space: nowrap}
+td.zeo2 {padding-right: 5px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: right; white-space: nowrap}
+td.zeo12 {padding-right: 5px; border: 1px solid :RA; text-align: right; white-space: nowrap}
+/*  */
+td.znc {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :HO; white-space: nowrap}
+td.znc1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :HO; white-space: nowrap}
+td.znc2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :HO; white-space: nowrap}
+td.znc12 {padding: 1px; border: 1px solid :RA; text-align: center; background-color: :HO; white-space: nowrap}
+/*  */
+td.zec {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :VI; white-space: nowrap}
+td.zec1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :VI; white-space: nowrap}
+td.zec2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :VI; white-space: nowrap}
+td.zec12 {padding: 1px; border: 1px solid :RA; text-align: center; background-color: :VI; white-space: nowrap}
+/*  */
+td.znl {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :HO; white-space: nowrap}
+td.znl1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :HO; white-space: nowrap}
+td.znl2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :HO; white-space: nowrap}
+td.znl12 {padding: 1px; border: 1px solid :RA; background-color: :HO; white-space: nowrap}
+/*  */
+td.zel {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :VI; white-space: nowrap}
+td.zel1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :VI; white-space: nowrap}
+td.zel2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :VI; white-space: nowrap}
+td.zel12 {padding: 1px; border: 1px solid :RA; background-color: :VI; white-space: nowrap}
+/*  */
+td.bdnt {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :TT; font-weight: bold; font-size: :FS+1; white-space: nowrap}
+td.bdnt1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :TT; font-weight: bold; font-size: :FS+1; white-space: nowrap}
+td.bdnt2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; text-align: center; background-color: :TT; font-weight: bold; font-size: :FS+1; white-space: nowrap}
+td.bdnt12 {padding: 1px; border: 1px solid :RA; text-align: center; background-color: :TT; font-weight: bold; font-size: :FS+1; white-space: nowrap}
+/*  */
+td.bdnl {padding: 1px; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :TK; font-weight: normal; font-size: :FS; white-space: nowrap}
+td.bdnl1 {padding: 1px; border-left: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :TK; font-weight: normal; font-size: :FS; white-space: nowrap}
+td.bdnl2 {padding: 1px; border-top: 1px solid :RA; border-bottom: 1px solid :RA; border-right: 1px solid :RA; background-color: :TK; font-weight: normal; font-size: :FS; white-space: nowrap}
+td.bdnl12 {padding: 1px; border: 1px solid :RA; background-color: :TK; font-weight: normal; font-size: :FS; white-space: nowrap}
+
+/* rozk³ad i analiza */
+td.w {word-spacing: -2px; white-space: nowrap; text-align: left; font-size: :FS-1}
+td.an1 {text-align: center; font-size: :FS-1; width: 20px}
+td.an2 {text-align: center; border-right: 1px solid :RA; border-bottom: 1px solid :RA; font-size: :FS-1; width: 20px}
+td.an3 {text-align: center; border-bottom: 1px solid :RA; font-size: :FS-1; width: 20px}
+td.an4 {text-align: center; border-right: 1px solid :RA; font-size: :FS-1; width: 20px}
+
+/* PARY */
+td.c {white-space: nowrap; padding: 1px 4px 1px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: center; font-size: :FS}
+td.l {white-space: nowrap; padding: 1px 4px 1px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: left; font-size: :FS}
+td.r {white-space: nowrap; padding: 1px 4px 1px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: right; font-size: :FS}
+td.u {white-space: nowrap; padding: 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: center; font-size: :FS+4}
+td.uvp {white-space: nowrap; padding: 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: center; font-size: :FS+2}
+td.nu {white-space: nowrap; padding: 4px; text-align: center; font-size: :FS+4}
+td.ul {white-space: nowrap; padding: 4px 12px 4px 12px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: left; font-size: :FS+4}
+td.ur {white-space: nowrap; padding: 4px 12px 4px 12px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: right; font-size: :FS+4}
+td.nor {word-spacing: -1px; white-space: nowrap; padding: 1px 4px 1px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: right; font-size: :FS}
+td.noh {word-spacing: -1px; white-space: nowrap; padding: 1px 4px 1px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: right; font-size: :FS-2}
+td.noc {word-spacing: -1px; white-space: nowrap; padding: 1px 4px 1px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: center; font-size: :FS}
+td.nol {word-spacing: -1px; white-space: nowrap; padding: 1px 4px 1px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: left; font-size: :FS}
+td.nos {word-spacing: -1px; white-space: nowrap; padding: 1px 4px 1px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: center; font-size: :FS-2}
+/* PARY RZUTNIK */
+#top {width: 1000px}
+#lewy {float: left; width: 499px}
+#prawy {float: left; width: 499px}
+td.xnor {word-spacing: -1px; white-space: nowrap; padding: 3px 10px 3px 4px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: right; font-size: :FS+7}
+td.xnoc {word-spacing: -1px; white-space: nowrap; padding: 3px 10px 3px 10px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: center; font-size: :FS+7}
+td.xnol {word-spacing: -1px; white-space: nowrap; padding: 3px 4px 3px 10px; border-bottom: 1px solid :RP; border-right: 1px solid :RP; text-align: left; font-size: :FS+7}
+#xnaz {word-spacing: -1px; white-space: nowrap; font-size: :FS+7pt; overflow: hidden}
+#pro {height:400px; overflow:scroll}
+/* komórka na pocz¹tku wiersza, zwykle pusta */
+td.n {border-right: 1px solid :RP; font-size: 7pt; text-align: right}
+td.n1 {border-right: 1px solid :RP; font-size: :FS; text-align: right}
+/* komórka nad tabelk¹ */
+td.o {font-size: 3pt; border-bottom: 1px solid :RP}
+td.o1 {font-size: :FS+6; border-bottom: 1px solid :RP}
+
+a.pa:link {font-size: :FS; font-family: Arial; text-decoration: none;color: #000000}
+a.pa:visited {font-size: :FS; font-family: Arial; text-decoration: none;color: #000000}
+a.pa:hover {font-size: :FS; font-family: Arial; text-decoration: none; color: #FFFFF2; background-color: #004600}
+a.pa:active {font-size: :FS; font-family: Arial; text-decoration: none; color: #FFFFF2; background-color: #004600}
+
+/* przycisk */
+.rssbutton{
+background-color: #ff6600;
+border: 1px #ff6600 outset;
+padding: 0 2px;
+color: white;
+text-decoration: none;
+font: bold 10px Verdana;
+}
+.rssbutton:visited, .rssbutton:hover, .rssbutton:active{
+color: white;
+}
+.cssbutton{
+background-color: #d1ec4c;
+border: 2px #d1ec4c outset;
+padding: 1px 4px;
+color: black;
+text-decoration: none;
+font: bold 90% "Calibri", sans-serif;
+}
+.cssbutton:visited{
+color: black;
+}
+
+.cssbutton:hover{
+border-style: inset;
+background-color: #e3f48e;
+padding: 2px 3px 0 5px; /*shift text 1px to the right and down*/
+}
+
+.cssbutton:active{
+color: black;
+}
+
