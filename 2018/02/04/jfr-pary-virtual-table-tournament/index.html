@@ -104,7 +104,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <p>Poniższa instrukcja ma za zadanie opisać sposób poprowadzenia w oprogramowaniu JFR Pary turnieju na IMP obliczanego w porównaniu do wyniku innego niż wynikający z zaspiów na sali gry.</p>
+    <p>Poniższa instrukcja ma za zadanie opisać sposób poprowadzenia w oprogramowaniu JFR Pary turnieju na IMP obliczanego w porównaniu do wyniku innego niż wynikający z zapisów na sali gry.</p>
     <p>Takie turnieje, rozgrywane "do wirtualnego stolika", porównują zapisy uzyskane przez uczestników do "średniej" ustalonej w sposób sztuczny, np. jako minimaks teoretyczny, jako wynik wzorcowy albo jako średnią w innym turnieju (w tym - butlerze turnieju teamów).</p>
     <p>Przykład turnieju obliczanego w ten sposób można zaobserwować w <a href="https://emkael.info/brydz/wyniki/2017/szczyrk/el_minimax.html">wynikach XVI Młodzieżowego Festiwalu Brydżowego</a>, obliczanych jako zbitka turniejów eliminacyjnych do minimaksa teoretycznego.</p>
   </div>
@@ -115,7 +115,7 @@
     <h2>Zakładamy turniej</h2>
   </div>
   <div class="panel-body">
-    <p>W poniższych rozważaniach zakładamy, że nasz liczy <code>N</code> stołów grających, czyli gra w nim <code>2N</code> par. Przy nieparzystej liczbie par, ewentualną pauzę liczymy jako parę grającą, chodzi nam o liczbę stołów, przy których pary uzyskują wyniki.</p>
+    <p>W poniższych rozważaniach zakładamy, że nasz turniej liczy <code>N</code> stołów grających, czyli gra w nim <code>2N</code> par. Przy nieparzystej liczbie par, ewentualną pauzę liczymy jako parę grającą, chodzi nam o liczbę stołów, przy których pary uzyskują wyniki.</p>
     <p>Zakładamy turniej na <code>2N+1</code> stołów (<code>4N+2</code> pary).</p>
     <p>Jako sposób liczenia wyników turnieju wybieramy <code>butler,odrzucamy</code> i wybieramy odrzucanie <code>N</code> zapisów z każdej strony.</p>
     <p>Tak zdefiniowane warunki gwarantują, że wynik w każdym protokole będzie obliczany do środkowego zapisu (mediany). Za chwilę zadbamy o to, żeby ta mediana była taka, jak chcemy.</p>
