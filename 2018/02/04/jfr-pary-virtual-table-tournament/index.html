@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>emkael.github.io</title>
+
+    <meta name="author" content="emkael" />
+    <meta name="description" content="emkael.github.io" />
+    <meta name="keywords" content="emkael, github, github pages, mkl" />
+
+    <base href="/" />
+
+        <link href="_css/styles.css?mtime=1476221917" rel="stylesheet" />
+    
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Menu</span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
+      <a class="navbar-brand" href=""> emkael.github.io </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+                        <li class="dropdown active">
+          
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Articles <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                                            <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">In Polish</li>
+                                                            <li><a href="2016/10/16/an-introduction-to-bash-completion-part-1">Bash completion, part 1</a></li>
+                                                <li><a href="2016/10/16/an-introduction-to-bash-completion-part-2">Bash completion, part 2</a></li>
+                                                <li><a href="2018/02/04/jfr-pary-virtual-table-tournament">Virtual tables in JFR Pary torunaments</a></li>
+                                  </ul>
+        </li>
+                                <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            My projects <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Racing stuff</li>
+                                                            <li><a href="https://github.com/emkael/ergast-goodies/">Ergast DB goodies</a></li>
+                                                <li><a href="https://github.com/emkael/elof1/">EloF1</a></li>
+                                                <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Bridge stuff</li>
+                                                            <li><a href="pary-bidding-data">Pary: bidding data</a></li>
+                                                <li><a href="https://github.com/emkael/jfrpary-virtual-table/">Pary: virtual tables</a></li>
+                                                <li><a href="https://github.com/emkael/patton/">Teamy: patton</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-vcards/">Teamy: vcards</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-playoff/">Teamy: play-off</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-ausbutler/">Teamy: normalized butler</a></li>
+                                                <li><a href="https://github.com/emkael/pzbs-ranking/">PBU ranking</a></li>
+                                                <li><a href="https://github.com/emkael/rrb2txt/">RRB2txt</a></li>
+                                                <li><a href="https://github.com/emkael/bcdd/">BCDD</a></li>
+                                                <li><a href="https://github.com/emkael/howellki/">Howellki</a></li>
+                                                <li><a href="https://github.com/emkael/osika/">OSiKa</a></li>
+                                                <li><a href="https://an9k.emkael.info/">Analizator9000</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                            <li><a href="https://github.com/emkael/">GitHub page</a></li>
+                                  </ul>
+        </li>
+                                <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Contributions <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li><a href="https://github.com/emkael/aktywator/">Aktywator by michzimny</a></li>
+                                                <li><a href="https://github.com/michzimny/teamy-quick-lineup/">Teamy quick lineup by michzimny</a></li>
+                                                <li><a href="https://github.com/emkael/prado/">Prado PHP framework</a></li>
+                                                <li><a href="https://github.com/emkael/yii-coding-standard/">Yii PHP framework coding standards</a></li>
+                                  </ul>
+        </li>
+                                <li>
+          <a href="contact/">About me / contact</a>
+        </li>
+                                <li>
+          <a href="https://emkael.info/">Website</a>
+        </li>
+                      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container">
+      <div class="page-header">
+  <h1>Prowadzenie turnieju "do wirtualnego stolika" w JFR Pary</h1>
+  <a href="2018/02/04/jfr-pary-virtual-table-tournament/">
+    <time class="text-muted" title="2018-02-04 18:00" datetime="2018-02-04T18:00">Sunday, February 04, 2018</time>
+  </a>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Poniższa instrukcja ma za zadanie opisać sposób poprowadzenia w oprogramowaniu JFR Pary turnieju na IMP obliczanego w porównaniu do wyniku innego niż wynikający z zaspiów na sali gry.</p>
+    <p>Takie turnieje, rozgrywane "do wirtualnego stolika", porównują zapisy uzyskane przez uczestników do "średniej" ustalonej w sposób sztuczny, np. jako minimaks teoretyczny, jako wynik wzorcowy albo jako średnią w innym turnieju (w tym - butlerze turnieju teamów).</p>
+    <p>Przykład turnieju obliczanego w ten sposób można zaobserwować w <a href="https://emkael.info/brydz/wyniki/2017/szczyrk/el_minimax.html">wynikach XVI Młodzieżowego Festiwalu Brydżowego</a>, obliczanych jako zbitka turniejów eliminacyjnych do minimaksa teoretycznego.</p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Zakładamy turniej</h2>
+  </div>
+  <div class="panel-body">
+    <p>W poniższych rozważaniach zakładamy, że nasz liczy <code>N</code> stołów grających, czyli gra w nim <code>2N</code> par. Przy nieparzystej liczbie par, ewentualną pauzę liczymy jako parę grającą, chodzi nam o liczbę stołów, przy których pary uzyskują wyniki.</p>
+    <p>Zakładamy turniej na <code>2N+1</code> stołów (<code>4N+2</code> pary).</p>
+    <p>Jako sposób liczenia wyników turnieju wybieramy <code>butler,odrzucamy</code> i wybieramy odrzucanie <code>N</code> zapisów z każdej strony.</p>
+    <p>Tak zdefiniowane warunki gwarantują, że wynik w każdym protokole będzie obliczany do środkowego zapisu (mediany). Za chwilę zadbamy o to, żeby ta mediana była taka, jak chcemy.</p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Monitor turnieju</h2>
+  </div>
+  <div class="panel-body">
+    <p>Pierwsze <code>N</code> stołów rozstawiamy tak, jak rozstawilibyśmy normalnie turniej. To są nasze stoły grające, siedzi przy nich pierwsze <code>2N</code> par naszej listy startowej.</p>
+    <p>Pozostałe <code>2N+2</code> par usadzamy w każdej rundzie przy pozostałych <code>N+1</code> stołach. W przypadku małego turnieju można to zrobić ręcznie, sadzając w każdej rundzie kolejne pary przy stołach o wysokich numerach. W przypadku większego turnieju - można wygenerować turniej dla dwóch sektorów (drugiego o 1 stół większego niż pierwszy) - dokładne rozstawienie przy nadmiarowych stołach nie ma żadnego znaczenia, dopóki przy każdym takim stole w każdej rundzie "siedzą" nadmiarowe pary.</p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Ustawiamy wirtualne zapisy</h2>
+  </div>
+  <div class="panel-body">
+    <p>Aby zagwarantować, że w każdym protokole środkowym wynikiem (czyli tym, do którego porównywane będą pozostałe) będzie nasz, z góry określony, wynik, wystarczy wpisać do protokołu <code>N+1</code> identycznych wyników, równych naszemu. W ten sposób niezależnie od pozostałych (uzyskanych w żywej grze) zapisów, jeden z naszych wyników będzie w protokole medianą.</p>
+    <p>
+      W tym celu najpierw ustawiamy na stole nr <code>N+1</code> (czyli pierwszym nadmiarowym) nasz wynik:
+      <ul>
+        <li>jeśli jest to "pełny" wynik (kontrakt, rozgrywający, liczba lew), możemy zrobić to przy pomocy dodatkowego "pierniczka" (lub narzędzia równoważnego, jak <a href="https://michzimny.pl/fillbws">FillBWS</a>)</li>
+        <li>jeśli jest to wynik liczbowy (np. średnia z protokołu innego turnieju), musimy wpisać go ręcznie do odpowiedniego wiersza tabeli <code>zapisy</code> w bazie danych turnieju (w kolumnie <code>zapi</code>, pozostałe mogą pozostać puste)</li>
+      </ul>
+    </p>
+    <p>
+      Następnie należy "rozmnożyć" ten zapis na wszystkie pozostałe nadmiarowe stoły. W tym celu wykonujemy w bazie danych turnieju następujące zapytanie SQL:
+      <pre>
+UPDATE zapisy z1 JOIN zapisy z2 ON z2.stol = <kbd>N+1</kbd> AND z1.stol &gt; <kbd>N+1</kbd> AND z1.nrr = z2.nrr
+SET z1.kont = z2.kont, z1.rozg = z2.rozg, z1.wist = z2.wist, z1.wyni = z2.wyni, z1.zapi = z2.zapi;</pre>
+      <code>N+1</code> to numer naszego pierwszego nadmiarowego stołu (tego, w którym ustawiliśmy nasz ustalony wynik).
+    </p>
+    <p>Taki turniej następnie możemy poprowadzić i obliczyć - średnia w każdym protokole będzie naszym, z góry ustalonym, wynikiem.</p>
+    <p>Należy pamiętać o ustawieniu nadmiarowym parom odpowiednio dużych ujemnych wyrównań - każda z tych par uzyskałaby w przeciwnym razie wynik <code>0 IMP</code> w turnieju, więc podzieliłaby prawdziwą listę par.</p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Ukrywamy wirtualne stoły na stronie wyników turnieju</h2>
+  </div>
+  <div class="panel-body">
+    <p>Do zaprezentowania wyników takiego turnieju bez zbędnego mieszania w głowach bardzo długimi protokołami i jeszcze dłuższą listą startową można użyć narzędzia <a href="https://github.com/emkael/jfrpary-virtual-table">JFRPary Virtual Table</a>.</p>
+    <p>Następnie uruchamiamy go, w wierszu poleceń, zgodnie <a href="https://github.com/emkael/jfrpary-virtual-table#u%C5%BCycie">z instrukcją użycia</a>, podając główny plik turnieju jako parametr.</p>
+    <p>
+      Po takim wywołaniu staną się następujące rzeczy:
+      <ul>
+        <li>z listy wyników i listy historii znikną nadmiarowe pary</li>
+        <li>z protokołów znikną wszystkie zapisy przy stołach, przy których obie pary były parami nadmiarowymi</li>
+        <li>dodany zostanie z powrotem jeden (pierwszy) z takich zapisów, wraz z opisującym go nagłówkiem</li>
+      </ul>
+    </p>
+    <p>Parametrem <code>-t OPIS_STOLIKA</code> sterujemy opisem, jaki pojawi się nad naszym ustalonym zapisem (np. "średnia butlera ligowego" itp.).</p>
+    <p>Program wykrywa jako nadmiarowe pary takie pary, w których oboje zawodniku ma puste imiona i nazwiska. Jeśli te imiona i nazwiska były zmieniane na liście startowej, numery par, które program ma traktować jako nadmiarowe, można podać wprost, jako kolejne argumenty wywołania programu.</p>
+    <p>Tak przerobione strony z wynikami należy następnie ręcznie wrzucić na stronę wyników (program <em>jeszcze</em> nie obsługuje wysyłania plików Gońcem).</p>
+    <p>Każdorazowe wygenerowanie protokołów lub stron z wynikami - przez Kolektor lub "globusik" w Parach - powoduje konieczność ponownego przerobienia stron z wynikami: ukrywanie stołów w wynikach na bieżąco nie jest obsługiwane.</p>
+  </div>
+</div>
+
+<div class="well">
+  <p>Opracował: <a href="https://emkael.info/">Michał Klichowicz</a>, Komisja IT PZBS</p>
+</div>
+
+    </div>
+
+    <div class="container" >
+      <hr />
+      <footer>
+        <p>
+          <address>
+            <span class="copy">&copy;</span>
+            <a href="//emkael.info/">emkael</a>, 2016-2018
+          </address>
+      </footer>
+    </div>
+
+        <script src="_js/scripts.js?mtime=1476221917" type="text/javascript"></script>
+    
+  </body>
+</html>
