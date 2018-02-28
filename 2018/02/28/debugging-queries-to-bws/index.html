@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Diagnostyka zapytań wykonywanych do plików BWS - emkael.github.io</title>
+
+    <meta name="author" content="emkael" />
+    <meta name="description" content="emkael.github.io" />
+    <meta name="keywords" content="emkael, github, github pages, mkl" />
+
+    <base href="/" />
+
+        <link href="_css/styles.css?mtime=1476221917" rel="stylesheet" />
+    
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Menu</span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
+      <a class="navbar-brand" href=""> emkael.github.io </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+                        <li class="dropdown active">
+          
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Articles <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                                            <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">In Polish</li>
+                                                            <li><a href="2016/10/16/an-introduction-to-bash-completion-part-1">Bash completion, part 1</a></li>
+                                                <li><a href="2016/10/16/an-introduction-to-bash-completion-part-2">Bash completion, part 2</a></li>
+                                                <li><a href="2018/02/04/jfr-pary-virtual-table-tournament">Virtual tables in JFR Pary tournaments</a></li>
+                                                <li><a href="2018/02/28/debugging-queries-to-bws">Sniffing SQL queries on BWS files</a></li>
+                                  </ul>
+        </li>
+                                <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            My projects <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Racing stuff</li>
+                                                            <li><a href="https://github.com/emkael/ergast-goodies/">Ergast DB goodies</a></li>
+                                                <li><a href="https://github.com/emkael/elof1/">EloF1</a></li>
+                                                <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Bridge stuff</li>
+                                                            <li><a href="pary-bidding-data">Pary: bidding data</a></li>
+                                                <li><a href="https://github.com/emkael/jfrpary-virtual-table/">Pary: virtual tables</a></li>
+                                                <li><a href="https://github.com/emkael/patton/">Teamy: patton</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-vcards/">Teamy: vcards</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-playoff/">Teamy: play-off</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-ausbutler/">Teamy: normalized butler</a></li>
+                                                <li><a href="https://github.com/emkael/pzbs-ranking/">PBU ranking</a></li>
+                                                <li><a href="https://github.com/emkael/rrb2txt/">RRB2txt</a></li>
+                                                <li><a href="https://github.com/emkael/bcdd/">BCDD</a></li>
+                                                <li><a href="https://github.com/emkael/howellki/">Howellki</a></li>
+                                                <li><a href="https://github.com/emkael/osika/">OSiKa</a></li>
+                                                <li><a href="https://an9k.emkael.info/">Analizator9000</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                            <li><a href="https://github.com/emkael/">GitHub page</a></li>
+                                  </ul>
+        </li>
+                                <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Contributions <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li><a href="https://github.com/emkael/aktywator/">Aktywator by michzimny</a></li>
+                                                <li><a href="https://github.com/michzimny/teamy-quick-lineup/">Teamy quick lineup by michzimny</a></li>
+                                                <li><a href="https://github.com/emkael/prado/">Prado PHP framework</a></li>
+                                                <li><a href="https://github.com/emkael/yii-coding-standard/">Yii PHP framework coding standards</a></li>
+                                  </ul>
+        </li>
+                                <li>
+          <a href="contact/">About me / contact</a>
+        </li>
+                                <li>
+          <a href="https://emkael.info/">Website</a>
+        </li>
+                      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container">
+      <div class="page-header">
+  <h1>Diagnostyka zapytań wykonywanych do plików BWS</h1>
+  <a href="2018/02/28/debugging-queries-to-bws/">
+    <time class="text-muted" title="2018-02-28 23:00" datetime="2018-02-28T23:00">Wednesday, February 28, 2018</time>
+  </a>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>Artykuł stanowi instrukcję konfiguracji narzędzi i plików, które pozwolą na zrzut i analizę zapytań SQL wykonywanych na bazach danych oprogramowania Bridgemate.</p>
+    <p>
+      Wymagane oprogramowanie to:
+      <ul>
+        <li>Microsoft Access, kompatybilny z plikami formatu Access2000 (tu użyto Accessa 2013)</li>
+        <li>serwer SQL Server (tu: SQL Server Express 2014)</li>
+        <li>SQL Server Import and Export Data (tu: z pakietu wersji 2014)</li>
+        <li>SQL Server Profiler (tu: w wersji 17)</li>
+      </ul>
+    </p>
+    <p>Operacje przedstawione w poniższym opisie prawdopodobnie są wykonalne z dowolnym innym serwerem bazodanowym, ale artykuł opisuje SQL Server ze względu na obecność w systemach Windows gotowych sterowników bazodanowych do SQL Server kompatybilnych z bazami Accessa, oraz dostępność przyjaznych użytkownikowi narzędzi do analizy operacji serwera baz danych.</p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Zarys koncepcji</h2>
+  </div>
+  <div class="panel-body">
+    <p>
+      Po przejrzeniu różnych porad i odpowiedzi znalezionych w Internecie, nie udało mi się skutecznie skorzystać żadnej z metod przeznaczonych dla konkretnych sterowników bazodanowych (Jet/ODBC).
+    </p>
+    <p>
+      Podstawowy pomysł miał więc polegać na przekierowaniu całej komunikacji z plikiem BWS przez pośredniczący serwer bazodanowy, dla którego można zastosować dowolne narzędzia analizy wykonywanych operacji. Pierwotna koncepcja rysowała się więc następująco:
+      <ol>
+        <li>Utworzyć bazę danych SQL Server w trybie tzw. <em>linked server</em>, mapując całą jej zawartość na oryginalny BWS.</li>
+        <li>Utworzyć pusty plik Accessa 2000 i połączyć w nim tabele z tabelami tak utworzonej bazy danych.</li>
+        <li>Wszelkie programy używające pliku BWS kierować do tego drugiego pliku BWS, zamiast oryginału.</li>
+      </ol>
+      W ten sposób wszystkie operacje wykonywałyby się na zawartości oryginalnego pliku, ale można by je łatwo przeanalizować podczas przejścia przez serwer bazy danych.
+    </p>
+    <p>
+      Niestety, prawidłowa konfiguracja <em>linked server</em> kierującego do pliku BWS mnie przerosła, procedura została więc zmodyfikowana:
+      <ol>
+        <li>Zaimportować całą zawartość oryginalnego pliku BWS do bazy danych SQL Server.</li>
+        <li>A dalej zgodnie z planem - utworzyć plik Accessa łączący się do tej bazy danych i korzystać z niego.</li>
+      </ol>
+    </p>
+    <p>Zaletą tego podejścia jest zachowanie oryginalnej zawartości pliku BWS - więc łatwa powtarzalność testów. Do tego metoda uniezależnia się od wyboru konkretnego serwera bazy danych, choć pozostałem przy SQL Server.</p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Import zawartości BWS do SQL Server</h2>
+  </div>
+  <div class="panel-body">
+    <ol>
+      <li>Uruchamiamy SQL Server 2014 Import and Export Data, czyli kreator importu/eksportu danych.</li>
+      <li><a href="/_img/debugging-queries-to-bws/01-01.png">Wybieramy jako źródło danych sterownik Jet Database Engine dla formatu Accessa (JDE to format Accessa 2000, ADE to format nowszy).</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/01-02.png">Wybieramy nasz plik BWS, pamiętając o wyszukiwaniu wszystkich plików, a nie tylko plików <code>*.mdb</code>.</a></li>
+      <li>Pliki BWS nie są zabezpieczane hasłem, więc możemy przejsć dalej bez podawania danych uwierzytelniających.</li>
+      <li><a href="/_img/debugging-queries-to-bws/01-03.png">Jako docelową bazę, wybieramy natywny sterownik SQL Server.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/01-04.png">Wybieramy naszą instancję SQL Server oraz dane uwierzytelniania (domyślnie do lokalnej instancji uwierzytelnia się poświadczeniami konta systemowego).</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/01-05.png">Za pośrednictwem przycisku New..., tworzymy nową bazę danych.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/01-06.png">Będzie to docelowa baza danych dla importu. Jeśli chcemy zaimportować do istniejącej bazy danych, wybieramy ją w tym kroku.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/01-07.png">Wybieramy kopiowanie wszystkich danych w tabelach lub widokach.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/01-08.png">Oznczamy wszystkie tabele, jakie udało się wylistować z pliku BWS jako importowane do bazy danych.</a></li>
+      <li>Możemy pominąć tabelę <code>Settings</code> (o tym później), możemy również dla każdej tabeli zmodyfikować sposób importu (Edit mappings...), pozostawiając kolumny tabeli bez zmian, ale np. wybierając zastąpienie istniejących rekordów (jeśli importujemy do istniejącej bazy danych).</li>
+      <li><a href="/_img/debugging-queries-to-bws/01-09.png">Zatwierdzamy natychmiastowe wykonanie importu.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/01-10.png">Uruchamiamy import.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/01-11.png">Gotowe!</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Połączenie nowego pliku Access z bazą SQL Server</h2>
+  </div>
+  <div class="panel-body">
+    <ol>
+      <li><a href="/_img/debugging-queries-to-bws/02-01.png">Tworzymy nową bazę danych Access dla komputerów stacjonarnych, wybieramy docelowe ścieżkę i format.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-02.png">Wybieramy format Access 2000, zatwierdzamy nazwę pliku (na razie może pozostać <code>*.mdb</code>).</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-03.png">Zamykamy domyślną tabelę roboczą, przechodzimy do wstęgi Dane zewnętrzne, wybieramy pozycję Baza danych ODBC.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-04.png">Nie importujemy kopii danych z SQL Server, będziemy tworzyć tabele połączone.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-05.png">W zakładce Komputerowe źródło danych skonfigurujemy źródło danych z naszej bazy SQL Server.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-06.png">Bez uprawnień administracyjnych jesteśmy w stanie zdefiniować źródło jedynie dla aktualnego użytkownika, to wystarczy.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-07.png">Określamy komunikację przy użyciu natywnego sterownika SQL Server.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-08.png">Nadajemy źródłu nazwę i opis, a także kierujemy je do naszej instancji SQL Server.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-09.png">Ustawiamy dane uwierzytelnienia do serwera (jak przy imporcie z oryginalnego BWS).</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-10.png">Zmieniamy domyślną bazę danych (Change the default database to:) na naszą kopię oryginalnego pliku BWS.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-11.png">Kończymy kreator z domyślnymi parametrami w ostatniej karcie.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-12.png">Możemy jeszcze przetestować połączenie z naszą bazą, na wypadek gdybyśmy np. określili złą lokalizację serwera i nazwę instancji SQL Server.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-13.png">Wybieramy tak utworzone źródło danych.</a> W przyszłości nie ma potrzeby tworzenia nowego źródła z każdym importem, możemy skierować nasze źródło na inną bazę danych poprzez aplet: Panel Sterowania -&gt; Narzędzia Administracyjne -&gt; Źródła danych (ODBC), przeprowadzając ponowną konfigurację, z wyborem innej domyślnej bazy danych.</li>
+      <li><a href="/_img/debugging-queries-to-bws/02-14.png">Wybieramy wszystkie tabele zaimportowane wcześniej z pliku BWS <strong>poza <code>Settings</code></strong>.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-15.png">Następnie Access pyta nas o klucze podstawowe wszystkich tabel. Ich ustawienie jest niezbędne do tego, by tak spreparowany plik Access mógł być używany nie tylko w trybie do odczytu, ale i do zapisu. Przeważnie kluczem podstawowym jest kolumna <code>ID</code>...</a></li>
+      <li>...poza tabelami <a href="/_img/debugging-queries-to-bws/02-16.png"><code>HandEvaluation</code></a>, <a href="/_img/debugging-queries-to-bws/02-17.png"><code>HandRecord</code></a>, <a href="/_img/debugging-queries-to-bws/02-18.png"><code>PlayerNumbers</code></a>, <a href="/_img/debugging-queries-to-bws/02-19.png"><code>RoundData</code></a> i <a href="/_img/debugging-queries-to-bws/02-20.png"><code>Tables</code></a>.</li>
+      <li><a href="/_img/debugging-queries-to-bws/02-21.png">Zmieniamy nazwy zaimportowany tabel połączonych, usuwając przedrostki wynikające z przestrzeni nazw tabel w bazie danych.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-22.png">Po tej operacji powinniśmy mieć w pliu z powrotem oryginalne nazwy tabel z pliku BWS.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-23.png">Możemy podejrzeć kopie oryginalnych danych, pobranych z SQL Server.</a></li>
+      <li>Pozostaje skopiować oryginalną tabelę <code>Settings</code>. Tabeli tej nie dało się zaimportować jako połączonej z SQL Server - jedyny klucz podstawowy, jaki może ona posiadać (<code>Section</code>), niekoniecznie znajduje się zawsze w pliku BWS, poza tym zawiera pola typu <code>bit</code>, które kiepsko się mapują między silnikami bazodanowymi. Oznacza to, że nie będziemy w stanie podsłuchać zapytań do tabeli <code>Settings</code>, ale rzadko kiedy są one nietrywialne i jeśli nie zajmujemy się konkretnie zapisem i odczytem ustawień (np. podziałem ustawień między ustawieniami definiowanymi przez BWS a definiowanymi przez BCS), nie będzie nam to potrzebne.</li>
+      <li><a href="/_img/debugging-queries-to-bws/02-24.png">We wstędze Dane zewnętrzne wybieramy źródło Access.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-25.png">W oknie wyboru pliku musi ręcznie wymusić wyświetlenie wszystkich plików w katalogu (nasz BWS ma inne rozszerzenie niż Access się spodziewa).</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-26.png">Wybieramy opcję importu kopii tabeli. Moglibyśmy utworzyć kolejną tabelę połączoną, ale wówczas modyfikowalibyśmy oryginalne dane.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-27.png">Wybieramy tabelę <code>Settings</code>.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-28.png">Kończymy kreator.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/02-29.png">Mamy teraz gotowy kompletny interfejs identyczny z oryginalnym plikiem BWS (z dokładnością do widoków danych).</a> Możemy zmienić mu rozszerzenie na <code>*.bws</code>.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Podsłuch zapytań w akcji</h2>
+  </div>
+  <div class="panel-body">
+    <ol>
+      <li><a href="/_img/debugging-queries-to-bws/03-01.png">Uruchamiamy SQL Server Profiler, wybieramy nowy zrzut: New trace</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/03-02.png">Łączymy się z naszą instancją SQL Server.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/03-03.png">Domyślne opcje działają calkiem nieźle, możemy ewentualnie automatycznie zrzucać dane do pliku (Save to file:)...</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/03-04.png">...albo skonfigurować zrzucanie tylko niektórych typów operacji na bazie danych.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/03-05.png">Zrzut został rozpoczęty, możemy uruchomić program używający plików BWS (np. Kolektor).</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/03-06.png">Wybieramy nasz spreparowany plik BWS zamiast pliku oryginalnego.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/03-07.png">W oknie SQL Server Profiler widzimy kolejne zrzucane pakiety.</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/03-08.png">Zamknięcie połączenia z plikiem BWS (zamknięcie Kolektora) również zostaje odnotowane. Możemy zatrzymać zrzut (Stop trace w pasku narzędzi).</a></li>
+      <li><a href="/_img/debugging-queries-to-bws/03-09.png">Zrzut możemy zapisać (<kbd>Ctrl</kbd>+<kbd>S</kbd>) do pliku <code>*.trc</code>, skojarzonego z SQL Server Profiler, celem późniejszej analizy.</a></li>
+    </ol>
+  </div>
+</div>
+
+    </div>
+
+    <div class="container" >
+      <hr />
+      <footer>
+        <p>
+          <address>
+            <span class="copy">&copy;</span>
+            <a href="//emkael.info/">emkael</a>, 2016-2018
+          </address>
+      </footer>
+    </div>
+
+        <script src="_js/scripts.js?mtime=1476221917" type="text/javascript"></script>
+    
+  </body>
+</html>
