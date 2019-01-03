@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Generowanie i weryfikacja rozdań przy pomocy SquareDeal - emkael.github.io</title>
+
+    <meta name="author" content="emkael" />
+    <meta name="description" content="emkael.github.io" />
+    <meta name="keywords" content="emkael, github, github pages, mkl" />
+
+    <base href="/" />
+
+        <link href="_css/styles.css?mtime=1476221917" rel="stylesheet" />
+    
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Menu</span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
+      <a class="navbar-brand" href=""> emkael.github.io </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+                        <li class="dropdown active">
+          
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Articles <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                                            <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">In Polish</li>
+                                                            <li><a href="2016/10/16/an-introduction-to-bash-completion-part-1">Bash completion, part 1</a></li>
+                                                <li><a href="2016/10/16/an-introduction-to-bash-completion-part-2">Bash completion, part 2</a></li>
+                                                <li><a href="2018/02/04/jfr-pary-virtual-table-tournament">Virtual tables in JFR Pary tournaments</a></li>
+                                                <li><a href="2018/02/28/debugging-queries-to-bws">Sniffing SQL queries on BWS files</a></li>
+                                                <li><a href="2019/01/03/generating-and-verifying-boards-with-squaredeal">Generating and verifying boards in SquareDeal</a></li>
+                                  </ul>
+        </li>
+                                <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            My projects <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Racing stuff</li>
+                                                            <li><a href="https://github.com/emkael/ergast-goodies/">Ergast DB goodies</a></li>
+                                                <li><a href="https://github.com/emkael/elof1/">EloF1</a></li>
+                                                <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Bridge stuff</li>
+                                                            <li><a href="pary-bidding-data">Pary: bidding data</a></li>
+                                                <li><a href="https://github.com/emkael/jfrpary-virtual-table/">Pary: virtual tables</a></li>
+                                                <li><a href="https://github.com/emkael/patton/">Teamy: patton</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-vcards/">Teamy: vcards</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-playoff/">Teamy: play-off</a></li>
+                                                <li><a href="https://github.com/emkael/jfrteamy-ausbutler/">Teamy: normalized butler</a></li>
+                                                <li><a href="https://github.com/emkael/pzbs-ranking/">PBU ranking</a></li>
+                                                <li><a href="https://github.com/emkael/rrb2txt/">RRB2txt</a></li>
+                                                <li><a href="https://github.com/emkael/bcdd/">BCDD</a></li>
+                                                <li><a href="https://github.com/emkael/howellki/">Howellki</a></li>
+                                                <li><a href="https://github.com/emkael/osika/">OSiKa</a></li>
+                                                <li><a href="https://an9k.emkael.info/">Analizator9000</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                            <li><a href="https://github.com/emkael/">GitHub page</a></li>
+                                  </ul>
+        </li>
+                                <li class="dropdown">
+          
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Contributions <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+                                    <li><a href="https://github.com/michzimny/aktywator/">Aktywator by michzimny</a></li>
+                                                <li><a href="https://github.com/michzimny/teamy-quick-lineup/">Teamy quick lineup by michzimny</a></li>
+                                                <li><a href="https://github.com/michzimny/teamy-diff-deals/">Teamy diff deals by michzimny</a></li>
+                                                <li><a href="https://github.com/emkael/prado/">Prado PHP framework</a></li>
+                                                <li><a href="https://github.com/emkael/yii-coding-standard/">Yii PHP framework coding standards</a></li>
+                                  </ul>
+        </li>
+                                <li>
+          <a href="contact/">About me / contact</a>
+        </li>
+                                <li>
+          <a href="https://emkael.info/">Website</a>
+        </li>
+                      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <div class="container">
+      <div class="page-header">
+  <h1>Generowanie i weryfikacja rozdań przy pomocy SquareDeal</h1>
+  <a href="2019/01/03/generating-and-verifying-boards-with-squaredeal/">
+    <time class="text-muted" title="2019-01-03 20:00" datetime="2019-01-01T20:00">Thursday, January 03, 2019</time>
+  </a>
+</div>
+
+<div class="panel panel-defualt container">
+  <div class="panel-body">
+    <p>Artykuł ma na celu pokazanie obsługi programu SquareDeal.</p>
+    <p>SquareDeal dostępny jest do ściągnięcia za darmo <a href="https://www.xs4all.nl/~sater/SquareDeal.zip">ze strony producenta</a>.</p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Założenie turnieju, publikacja założeń (wystarczająco długo przed turniejem)</h2>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-01.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-01.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Uruchamiamy SquareDeal po raz pierwszy. Program nie wykrył żadnych turniejów, dla których mielibyśmy generować rozdania. Wybieramy opcję utworzenia nowego turnieju, wpisując <kbd>+</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-02.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-02.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Nadajemy naszemu turniejowi nazwę - prefiks plików generowanych przez SquareDeal (ale nie prefiks generowanych plików z rozkładami): <kbd>test</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-03.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-03.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Dostajemy możliwość ustawienia informacji o zawodach. Nadajemy turniejowi opis/nazwę, wybierając opcję <kbd>1</kbd> i podając: <kbd>Testowy Turniej</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-04.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-04.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Opcja <kbd>2</kbd> pozwala ustawić opis <em>informacji opóźnionej</em>. My wybraliśmy wyniki losowania Lotto, zapisane jednym ciągiem, a opis ten zapisaliśmy bez polskich znaków. Uwaga: opis ten jest używany zamiast <em>informacji opóźnionej</em> jeśli nie ustawimy jej przed wygenerowaniem rozdań.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-05.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-05.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        W końcu, opcja <kbd>3</kbd> pozwala na określenie struktury naszych zawodów. Nasz przykładowy turniej ma strukturę znaną z GPP Par - 50 rozdań, granych w kolejności 1-30, 1-20. Dodajemy pierwszą fazę, złożoną z <kbd>1</kbd> <em>sesji</em> (w nazewnictwie SquareDeal: jednego pliku PBN) liczącej <kbd>30</kbd> rozdań.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-06.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-06.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Uzupełniamy prefiks dla generowanych plików PBN (<kbd>test1</kbd>) oraz opis pierwszej fazy zawodów. Wszystkie wpisane tu informacje trafią do pliku upublicznianego przed wygenerowaniem rozkładów na zawody.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-07.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-07.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Powtarzamy operację dla drugiej fazy turnieju - <kbd>1</kbd> <em>sesja</em>, licząca tym razem <kbd>20</kbd> rozdań.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-08.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-08.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        W dowolnym momencie możemy zakończyć pracę programu, wybierając opcję <kbd>0</kbd> i potwierdzając <kbd>ENTER</kbd>em. Wszystkie zmiany zostaną zapisane.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-09.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-09.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        SquareDeal utworzył dla naszego turnieju dwa pliki: <code>test.sqd</code> i <code>test.sqk</code>. Ten pierwszy zostanie niedługo podany do publicznej wiadomości, tego drugiego <strong>nie możemy ujawniać</strong> aż do rozegrania rozdań.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-10.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-10.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Plik <code>SQD</code> (<em>SQuare deal Definition</em>) zawiera ustalone przez nas, publicznie znane, parametry rozgrywanych zawodów: wybraną przez nas liczbę sesji, liczbę rozdań dla każdej sesji i ich opis oraz zadeklarowaną przez nas <em>informację opóźnioną</em>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-11.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-11.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Plik <code>SQK</code> (<em>SQuare deal Key</em>) zawiera <strong>poufne</strong> dane losowe, które posłużą (w połączeniu z <em>informacją opóźnioną</em>) do wygenerowania rozdań w poszczególnych sesjach.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-12.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-12.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Jeśli zdecydowaliśmy, że struktura turnieju (i deklarowana przez nas <em>informacja opóźniona</em>) już się nie zmieni, przygotowujemy pliki turnieju do publikacji, wybierając opcję nr <kbd>4</kbd>. Program automatycznie zakończy po tej operacji pracę.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/01-13.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/01-13.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        W pliku <code>SQD</code> pojawiła się informacja (<kbd>PU</kbd> w linii 6), że plik jest gotowy do publikacji.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default contaienr">
+  <div class="panel-heading">
+    <h2>Wprowadzenie informacji opóźnionej, wygenerowanie rozdań (przed turniejem)</h2>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-01.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-01.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Ponowne uruchomienie programu i wybraniu naszego turnieju, otrzymujemy teraz (po ustawieniu flagi publikacji) zupełnie inny zestaw opcji do wyboru.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-02.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-02.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Wybór opcji nr <kbd>1</kbd> pozwala ustawić wartość naszej <em>informacji opóźnionej</em>. Wpisujemy więc wyniki zadeklarowanego przez nas wcześniej losowania Lotto: <kbd>62024334447</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-03.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-03.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Możemy przystąpić do generowanie rozdań. Wybieramy opcję nr <kbd>2</kbd>. Generujemy najpierw plik dla pierwszej (<kbd>1</kbd>) fazy turnieju. Mamy w niej zdefiniowaną jedną <em>sesję</em> (plik PBN), więc możemy wygenerować wszystkie (<kbd>*</kbd>) sesje.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-04.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-04.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Przy pierwszej okazji program (właściwie: sam BigDeal) zapyta nas o parametry konfiguracji generowania rozdań. Najpierw - o formaty plików, jakie chcemy otrzymać. Domyślny wybór (<code>dup,pbn</code>) wygeneruje po dwa pliki dla każdego zestawu rozkładów i pozwoli obsłużyć oba popularne w Polsce typy maszyn do powielania. Jeśli potrzebujemy jedynie plików <code>PBN</code>, możemy wpisać na tym etapie tylko <kbd>pbn</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-05.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-05.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Następnie BigDeal spyta, czy ma za każdym razem pytać o formaty plików, jakie chcemy generować. Domyślna wartość to <kbd>no</kbd> ("nie").
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-06.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-06.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        W końcu - BigDeal spyta nas o nasz identyfikator sędziego (np. imię i nazwisko). Wartość ta była używana w tradycyjnej wersji BigDeal jako część danych losowych służących do generowania rozdań. SquareDeal, dając możliwość wygenerowania (weryfikacji) tych samych rozdań wielu osobom, z tej wartości nie korzysta.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-07.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-07.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Analogicznie, generujemy rozdania dla wszystkich (<kbd>*</kbd>) <em>sesji</em> fazy turnieju nr <kbd>2</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-08.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-08.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        W katalogu programu utworzone zostały pliki <code>test1.pbn</code> i <code>test2.pbn</code> - to nasze rozkłady na turniej, możemy je przekazać do powielarni.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-09.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-09.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Możemy też zakończyć działanie SquareDeal. Jeżeli nie zrobiliśmy tego wcześniej, program zapisze ustaloną już wartość <em>informacji opóźnionej</em> do pliku <code>SQD</code>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/02-10.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/02-10.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Gdyby na tym etapie ktokolwiek poza generującym rozkłady (tj. posiadaczem pliku <code>SQK</code>) próbował uruchomić SquareDeal i wybrać do edycji ściągnięty plik <code>SQD</code>, program nie pozwoli na żadne operacje - brakuje bowiem pliku <code>SQK</code>, niezbędnego do wygenerowania rozdań.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Weryfikacja wiarygodności rozdań (po turnieju)</h2>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-01.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-01.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Po turnieju przekazaliśmy zawodnikom również plik <code>SQK</code>. Po umieszczeniu go w katalogu programu, tym raze SquareDeal pozwala operować na nim dokładnie tak samo, jak pozwalał dotychczas rozdającemu. Wita nas dokładnie to samo menu.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-02.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-02.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Możemy (a nawet: musimy) ustawić ustaloną <em>informację opóźnioną</em>, za pomocą opcji nr <kbd>1</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-03.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-03.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Możemy również, w dokładnie taki sam sposób, wygenerować rozkłady dla poszczególnych sesji turnieju. Jak dotychczas, służy do tego opcja nr <kbd>2</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-04.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-04.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Dla naszego hipotetycznego zawodnika sprawdzającego wiarygodność rozkładów, jest to pierwsze uruchomienie programu, więc również i on musi przejść przez konfigurację BigDeala, opisaną powyżej.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-05.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-05.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Wybieramy najmniej natarczywą opcję...
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-06.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-06.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        ...a także ustawiamy inne niż dla rozdającego dane identyfikujące - pokażemy, że nie wpływają one na możliwość weryfikacji rozkładów.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-07.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-07.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Generujemy również rozkłady dla fazy turnieju nr <kbd>2</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-08.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-08.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Po wygenerowaniu rozdań, jesteśmy w stanie stwierdzić, że są one identyczne z tymi, które wygenerował i powielił na turniej organizator.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-09.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-09.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Możemy również sprawdzić, co by było, gdyby w Lotto wypadły inne numery. Udowodni to, że organizator nie był w stanie przewidzieć (więc: zmanipulować) rozkładów turnieju. Założmy, że w losowaniu padły numery: <code>4</code>, <code>8</code>, <code>15</code>, <code>16</code>, <code>23</code>, <code>42</code>. Zgodnie z przyjętą konwencją, <em>informacja opóźniona</em> przyjmuje wtedy wartość <kbd>4815162342</kbd>.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-10.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-10.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Generujemy teraz ponownie rozdania...
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/03-11.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/03-11.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        ...i widzimy, że faktycznie różnią się od tych, którymi grany był turniej!
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="container" >
+      <hr />
+      <footer>
+        <p>
+          <address>
+            <span class="copy">&copy;</span>
+            <a href="//emkael.info/">emkael</a>, 2016-2018
+          </address>
+      </footer>
+    </div>
+
+        <script src="_js/scripts.js?mtime=1529267880" type="text/javascript"></script>
+    
+  </body>
+</html>
