@@ -476,6 +476,48 @@
   </div>
 </div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Uniemożliwienie sędziemu podmiany rozdań na inny wygenerowany zestaw</h2>
+    <em>Sekcja dodana 04.01.2019</em>
+  </div>
+  <div class="panel-body">
+    <p>
+      Sprawdźmy jeszcze, co by się stało, gdyby nieetyczny sędzia próbował manipulować rozkładami turnieju. Powyżej pokazaliśmy, że z danego pliku <code>SQK</code> i danej <em>informacji opóźnionej</em> da się wygenerować tylko jeden, zawsze ten sam zestaw rozdań. A co gdyby sędzia wygenerował kilka par plików <code>SQK</code> i <code>SQD</code> i próbował wybrać, które rozkłady powielić na turniej?
+    </p>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/04-01.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/04-01.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Załóżmy, że powtórzyliśmy operacje z powyższych sekcji i otrzymaliśmy drugi zestaw plików <code>SQD</code> i <code>SQK</code>. Widzimy, że losowe klucze, służące do generowania rozdań, w nowym pliku <code>SQK</code> są różne, pomimo tego, że wybraliśmy takie same parametry turnieju.
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/04-02.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/04-02.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Pliki <code>SQD</code> również się różnią - wszystkie parametry są identyczne, ale pole <kbd>KH</kbd>, wyliczane na podstawie zawartości wygenerowanego pliku <code>SQK</code> ma inną wartość. Pamiętajmy, że plik <code>SQD</code> został już, wcześniej, opublikowany - więc jedyna właściwa wartość pola <kbd>KH</kbd> jest już publicznie znana, i to zanim sędzia miał możliwość wygenerowania rozkładów na turniej (bo nieznana wtedy była jeszcze <em>informacja opóźniona</em>).
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <a href="/_img/generating-and-verifying-boards-with-squaredeal/04-03.png">
+          <img class="img-thumbnail" src="/_img/generating-and-verifying-boards-with-squaredeal/thumbs/04-03.png">
+        </a>
+      </div>
+      <div class="col-sm-10">
+        Jeżeli sędzia po turnieju spróbuje opublikować inny plik <code>SQK</code> niż ten, którego powinien użyć z opublikowanym wcześniej plikiem <code>SQD</code> (np. inny plik <code>SQK</code> użyty niezgodnie z procedurą do powtórzenia wygenerowania rozdań), program nie pozwoli wygenerować rozdań, zwracając uwagę na niezgodność wartości pola <kbd>KH</kbd>. Oznacza to, że opublikowane przed turniejem informacje nie poświadczają wiarygodności rozkładów turnieju i rozkłady te mogły być podatne na manipulacje.
+      </div>
+    </div>
+  </div>
+</div>
+
     </div>
 
     <div class="container" >
